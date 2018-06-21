@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/viterijose/Mongoose-News/issues"
   },
-  "homepage": "https://github.com/viterijose/Mongoose-News#readme"
+  "homepage": "https://github.com/viterijose/Mongoose-News#readme",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
 }
