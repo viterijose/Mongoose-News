@@ -27,4 +27,29 @@ $(function() {
     );
   });
 
+  $(".saved-articles").on("onlcik", function(event) {
+
+    $.GET("/api/article/saved",
+      function() {
+        console.log("Articles saved");
+        // Reload the page to get the updated list
+        // location.reload();
+      }
+    );
+  });
+
+  $(".delete-article").on("onclick", function (event){
+    event.preventDefault();
+    alert("Deleting article...")
+    const id = $(this).data("id");
+    console.log(id);
+    $.ajax("/api/delete/article/"+id,{
+      type: "DELETE"
+    }).then(
+      function(){
+        console.log("Article deleted: "+id);
+        location.reload();
+      }
+    )
+  });
 });

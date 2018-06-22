@@ -47,6 +47,26 @@ var orm = {
         console.log(err);
       });
       // cb("SAVED")
+  },
+  find: function(res){
+    Article.find({})
+    .then(function(dbArticle){
+      // console.log(dbArticle);
+      res(dbArticle);
+    })
+    .catch(function(err){
+      console.log(err);
+    })
+  },
+  delete: function(objectId, res){
+    Article.findByIdAndRemove(objectId)
+    .then(function(dbArticle){
+      console.log(dbArticle);
+      // res(dbArticle);
+    })
+    .catch(function(err){
+      console.log(err);
+    })
   }
 };
 

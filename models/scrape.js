@@ -9,19 +9,19 @@ var scrape = function (cb) {
     let i = 0;
     $(".theme-summary").each(function (i, element) {
 
-      const head = $(this).children(".story-body").children(".headline").text().trim();
-      const thumb = $(this).children(".media").children("a").children("img").attr("src");
-      const sum = $(this).children(".story-body").children(".summary").text().trim();
-      const link = $(this).children(".story-body").children(".headline").children("a").attr("href");
+      const headline = $(this).children(".story-body").children(".headline").text().trim();
+      const imgLink = $(this).children(".media").children("a").children("img").attr("src");
+      const summary = $(this).children(".story-body").children(".summary").text().trim();
+      const articleLink = $(this).children(".story-body").children(".headline").children("a").attr("href");
       id = i++;
-      if (!link) {
+      if (!articleLink) {
         return articles;
       } else {
         const data = ({
-          heading: head,
-          link: link,
-          summary: sum,
-          thumb: thumb,
+          headline: headline,
+          articleLink: articleLink,
+          summary: summary,
+          imgLink: imgLink,
           id: id
         });
         articles.push(data)
