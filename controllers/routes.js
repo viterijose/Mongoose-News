@@ -33,8 +33,9 @@ router.get("/api/article/saved", function (req, res) {
   });
 });
 
-router.delete("/api/article", function (req, res) {
+router.delete("/api/article/:id", function (req, res) {
   const id = req.params.id
+  // const id = "5b2d42c1d6fb710c21fd64c9"; //working with dummy test
   console.log(id);
   orm.delete(id, function (data) {
     res.render("saved", { data });
