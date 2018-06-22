@@ -1,11 +1,6 @@
-// Import MySQL connection.
-var connection = require("../config/connection.js");
 
-// Helper function for SQL syntax.
-// Let's say we want to pass 3 values into the mySQL query.
-// In order to write the query, we need 3 question marks.
-// The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
-// ["?", "?", "?"].toString() => "?,?,?";
+var connection = require("../config/connection.js");
+var Article = require("../models/Articles");
 function printQuestionMarks(num) {
   var arr = [];
 
@@ -15,7 +10,7 @@ function printQuestionMarks(num) {
 
   return arr.toString();
 }
-// Helper function to convert object key/value pairs to SQL syntax
+
 function objToSql(ob) {
   var arr = [];
 
@@ -39,16 +34,19 @@ function objToSql(ob) {
 }
 // Object for all our SQL statement functions.
 var orm = {
-  all: function(cb) {
-      db.Article.find({})
+  save: function(articleInfo,res) {
+      Article.create(articleInfo)
       .then(function(dbArticle) {
         // If we were able to successfully find Articles, send them back to the client
-        res.json(dbArticle);
+        res(dbArticle);
+        // console.log(dbArticle);
       })
       .catch(function(err) {
         // If an error occurred, send it to the client
-        res.json(err);
+        // res.json(err);
+        console.log(err);
       });
+      // cb("SAVED")
   }
 };
 

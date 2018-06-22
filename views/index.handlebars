@@ -1,11 +1,27 @@
 <h1>Articles</h1>
 
-<ul>
-  {{#each data}}
-    <h2> <a href = {{link}}>{{heading}}</a></h2>
-    <img src = {{thumb}}>
-    <p>{{summary}}</p>
-  {{/each}}
-</ul>
+{{!--
+<ul> --}} {{#each data}} {{!--
+  <li>
+    <h2 data-id="{{id}}-heading">
+      <a href={ {link}}>{{heading}}</a>
+    </h2>
+    <img data-id="{{id}}-img" src={{thumb}}>
+    <p data-id="{{id}}-summary">{{summary}}</p>
+    <button class="save-article" data-id="{{id}}">SAVE ARTICLE</button>
+  </li> --}}
 
+  <form class="create-form">
 
+    <div class="form-group">
+
+      <a href= {{link}} data-head= {{id}}>{{heading}}</a>
+
+      <img src= {{thumb}} data-img= {{id}}>
+      <p data-sum= {{id}}>{{summary}}</p>
+
+    </div>
+
+    <button type="submit" data-id={{id}}>SAVE ARTICLE</button>
+  </form>
+  {{/each}} {{!-- </ul> --}}

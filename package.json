@@ -18,13 +18,9 @@
   },
   "homepage": "https://github.com/viterijose/Mongoose-News#readme",
   "dependencies": {
-<<<<<<< HEAD
-    "axios": "^0.18.0"
-=======
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "mongoose": "^5.1.6",
     "request": "^2.87.0"
->>>>>>> 8efc56aa90e600ea2b43921fd7d6ca76ee0c778b
   }
 }

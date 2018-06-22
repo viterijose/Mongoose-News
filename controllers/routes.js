@@ -1,27 +1,39 @@
 var express = require("express");
-
 var router = express.Router();
 
-// var articles = require("../models/Articles.js");
+var articles = require("../models/Articles.js");
 var scrape = require("../models/scrape.js");
-
-// Create all our routes and set up logic within those routes where required.
+var orm = require("../config/orm")
 router.get("/scrape", function(req, res) {
   // res.send("Test");
   scrape(function(data){
-    console.log(data);
+    // console.log(data);
     res.render("index", {data});
   });
-  // articles.all(function(data) {
-  //   var hbsObject = {
-  //     news: data
-  //   };
-  //   // console.log(hbsObject);
-  //   res.send(hbsObject);
-  // });
 });
+router.post("/api/article/save", function(req,res){
+  const headline = req.body.headline;
+  const imgLink = req.body.imgLink;
+  const sum = req.body.sum;
+  const articleLink = req.body.articleLink;
 
+  console.log("Heading: "+imgLink);
+  orm.save({headline,imgLink,sum,articleLink}, function(response){
+    console.log(response);
+    res.json("SAVED ARTICLE");
+  });
+})
 
-
-// Export routes for server.js to use.
 module.exports = router;
+
+
+// router.post("/api/cats", function(req, res) {
+//   cat.create([
+//     "name", "sleepy"
+//   ], [
+//     req.body.name, req.body.sleepy
+//   ], function(result) {
+//     // Send back the ID of the new quote
+//     res.json({ id: result.insertId });
+//   });
+// });
