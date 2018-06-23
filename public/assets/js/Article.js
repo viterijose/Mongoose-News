@@ -1,5 +1,25 @@
-// Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(function() {
+
+$(document).ready(function() {
+  document.getElementById("scrape").addEventListener("click", function(){
+
+    // alert("clicked");
+    $.AJAX({
+      type: "GET",
+      URL: "/scrape"
+    })
+
+    // $.GET("/scrape", function(){
+    //   alert("articles scraped")
+    // })
+  //   function() {
+  //     console.log("Articles sraped");
+  //     alert("New Articles added");
+  //   }
+  // );
+});
+  // $("#scrape").on("onclick", function(event){
+  //   alert("clicked");
+  // })
   $(".create-form").on("submit", function(event) {
     event.preventDefault();
     // alert("click");
@@ -27,7 +47,7 @@ $(function() {
     );
   });
 
-  $(".saved-articles").on("onlcik", function(event) {
+  $(".saved-articles").on("onlclick", function(event) {
 
     $.GET("/api/article/saved",
       function() {

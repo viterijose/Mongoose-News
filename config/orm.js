@@ -34,39 +34,51 @@ function objToSql(ob) {
 }
 // Object for all our SQL statement functions.
 var orm = {
-  save: function(articleInfo,res) {
-      Article.create(articleInfo)
-      .then(function(dbArticle) {
+  save: function (articleInfo, res) {
+    Article.create(articleInfo)
+      .then(function (dbArticle) {
         // If we were able to successfully find Articles, send them back to the client
         res(dbArticle);
         // console.log(dbArticle);
       })
-      .catch(function(err) {
+      .catch(function (err) {
         // If an error occurred, send it to the client
         // res.json(err);
         console.log(err);
       });
-      // cb("SAVED")
+    // cb("SAVED")
   },
-  find: function(res){
+  find: function (res) {
     Article.find({})
-    .then(function(dbArticle){
-      // console.log(dbArticle);
-      res(dbArticle);
-    })
-    .catch(function(err){
-      console.log(err);
-    })
+      .then(function (dbArticle) {
+        // console.log(dbArticle);
+        res(dbArticle);
+      })
+      .catch(function (err) {
+        console.log(err);
+      })
   },
-  delete: function(objectId, res){
+  delete: function (objectId, res) {
     Article.findByIdAndRemove(objectId)
-    .then(function(dbArticle){
-      console.log(dbArticle);
-      // res(dbArticle);
-    })
-    .catch(function(err){
-      console.log(err);
-    })
+      .then(function (dbArticle) {
+        console.log(dbArticle);
+        // res(dbArticle);
+      })
+      .catch(function (err) {
+        console.log(err);
+      })
+  },
+  update: function (data, res) {
+    console.log(data);
+    const objectId = data.id;
+    const note = data.note;
+    Article.findByIdAndUpdate(objectId,{"note":note})
+      .then(function (dbArticle) {
+        console.log(dbArticle);
+      })
+      .catch(function (err) {
+        console.log(err);
+      })
   }
 };
 

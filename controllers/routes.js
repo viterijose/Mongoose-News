@@ -5,6 +5,11 @@ var articles = require("../models/Articles.js");
 var scrape = require("../models/scrape.js");
 var orm = require("../config/orm");
 
+router.get("/", function (req, res) {
+
+    res.render("index");
+
+});
 router.get("/scrape", function (req, res) {
   // res.send("Test");
   scrape(function (data) {
@@ -41,5 +46,19 @@ router.delete("/api/article/:id", function (req, res) {
     res.render("saved", { data });
   })
 });
+// router.post("api/article/note/:id", function (req, res) {
+  // const id = req.params.id;
+  // const note = req.body.note;
+  const id = "5b2d5ae1eb433f0c53ce196c";
+  const note = "Testing mongoose update";
+  const newNote = {
+    id: id,
+    note: note
+  }
+  orm.update(newNote, function (data) {
+    res.render("saved", { data });
+  })
+
+// })
 
 module.exports = router;

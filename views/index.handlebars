@@ -1,30 +1,43 @@
+<div class="container-header">
+  <ul class="nav nav-tabs">
+    <h2>Mongoose News</h2>
+    <li class="nav-item">
+      <a class="nav-link active" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/api/article/saved">Saved Articles</a>
+    </li>
+    <li class="nav-item">
+      <button type="button" class=" btn btn-danger" id= "scrape">SCRAPE NEW ARTICLES</button>
+    </li>
+  </ul>
+</div>
+<button class="saved-articles">Saved Articles</button>
 
-<button class = "saved-articles">Saved Articles</button>
-
+<div class="jumbotron">
+  <h1 class="display-4">NEWS SCRAPER</h1>
+  <p class="lead">Scrape the latest tech news on the New York Times</p>
+  <hr class="my-4">
+  </p>
+</div>
 <h1>Articles</h1>
 
-{{!--
-<ul> --}} {{#each data}} {{!--
-  <li>
-    <h2 data-id="{{id}}-heading">
-      <a href={ {link}}>{{heading}}</a>
-    </h2>
-    <img data-id="{{id}}-img" src={{thumb}}>
-    <p data-id="{{id}}-summary">{{summary}}</p>
-    <button class="save-article" data-id="{{id}}">SAVE ARTICLE</button>
-  </li> --}}
+<div class="container-articles">
+  {{#each data}}
+
 
   <form class="create-form">
 
     <div class="form-group">
 
-      <a href= {{articleLink}} data-head= {{id}}>{{headline}}</a>
+      <a href={{articleLink}} data-head={{id}}>{{headline}}</a>
 
-      <img src= {{imgLink}} data-img= {{id}}>
-      <p data-sum= {{id}}>{{summary}}</p>
+      <img src={{imgLink}} data-img={{id}}>
+      <p data-sum={{id}}>{{summary}}</p>
 
     </div>
 
     <button type="submit" data-id={{id}}>SAVE ARTICLE</button>
   </form>
-  {{/each}} {{!-- </ul> --}}
+  {{/each}}
+</div>
