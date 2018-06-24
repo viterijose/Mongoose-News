@@ -26,15 +26,18 @@
   {{#each data}}
   <form class="create-form">
     <div class="form-group">
-
-      <a href={{articleLink}} data-head={{id}}>{{headline}}</a>
-
-      <img src={{imgLink}} data-img={{id}}>
-      <p data-sum={{id}}>{{summary}}</p>
+        <a class="articles" href={{articleLink}} data-head={{id}}>{{headline}}</a>
+      <div class="d-flex justify-content-start">
+        <img src={{imgLink}} data-img={{id}}>
+      </div>
+      <div class="d-flex justify-content-start">
+      
+        <p data-sum={{id}}>{{summary}}</p>
+      </div>
 
     </div>
-    <button class="add-note" data-id={{id}}>ARTICLE NOTES</button>
-    <button class="delete-article" data-id={{id}}>DELETE ARTICLE</button>
+    <button class="btn btn-primary add-note" data-id={{id}}>ARTICLE NOTES</button>
+    <button class="btn btn-danger delete-article" data-id={{id}}>DELETE ARTICLE</button>
   </form>
   {{/each}}
 </div>

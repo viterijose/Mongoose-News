@@ -1,19 +1,40 @@
-li {
-  padding: 5px;
-  margin: 5px;
-  background: #faebd7;
-}
-
 .label {
   font-weight: bold;
 }
 
-.create-update-form {
+.create-form {
   padding: 5px;
   margin: 5px;
-  background: aqua;
+  background: rgb(240, 162, 93);
+}
+
+p{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  color: black;
 }
 
 .form-group {
   margin-bottom: 5px;
+}
+
+.container-articles {
+  margin: auto;
+  color: rgb(224, 149, 19);
+}
+
+img{
+  width: 30%;
+  height: 30%;
+}
+
+.articles{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24px;
+  color: black;
+}
+.container-header{
+  padding: 10px;
+  margin: 10px;
+  color: red;
 }

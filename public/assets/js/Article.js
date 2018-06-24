@@ -33,7 +33,7 @@ $(document).ready(function() {
       data: newArticle
     }).then(
       function() {
-        console.log("Article saved");
+        alert("Article saved");
         // Reload the page to get the updated list
         // location.reload();
       }
