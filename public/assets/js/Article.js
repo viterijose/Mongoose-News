@@ -10,16 +10,10 @@ $(document).ready(function() {
     })
 
 });
-  // $("#scrape").on("onclick", function(event){
-  //   alert("clicked");
-  // })
+
   $(".create-form").on("submit", function(event) {
     event.preventDefault();
-    // alert("click");
-    // var id = $(this).data("id");
-    // console.log(id)
-    // var heading = $("a",this).text();
-    // console.log(heading);
+
     var newArticle = {
       headline: $("a",this).text().trim(),
       imgLink: $("img",this).attr('src'),
