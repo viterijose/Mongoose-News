@@ -7,14 +7,15 @@ var orm = require("../config/orm");
 
 router.get("/", function (req, res) {
 
-    res.render("index");
+  res.render("index");
 
 });
 router.get("/scrape", function (req, res) {
-  // res.send("Test");
+  // console.log("Hit route")
   scrape(function (data) {
     // console.log(data);
     res.render("index", { data });
+    // res.render("index", { data });
   });
 });
 
@@ -24,16 +25,17 @@ router.post("/api/article/save", function (req, res) {
   const summary = req.body.sum;
   const articleLink = req.body.articleLink;
 
-  console.log("Heading: " + imgLink);
+  // console.log("Heading: " + imgLink);
   orm.save({ headline, articleLink, summary, imgLink }, function (response) {
-    console.log(response);
-    res.json("SAVED ARTICLE");
+    // console.log(response);
+    res.send("SAVED ARTICLE");
   });
 })
 
 router.get("/api/article/saved", function (req, res) {
   // res.send("Test");
   orm.find(function (data) {
+    console.log("IN ROUTES :---------\n:"+data)
     res.render("saved", { data });
   });
 });
@@ -46,11 +48,11 @@ router.delete("/api/article/:id", function (req, res) {
     res.render("saved", { data });
   })
 });
-// router.post("api/article/note/:id", function (req, res) {
-  // const id = req.params.id;
-  // const note = req.body.note;
-  const id = "5b2d5ae1eb433f0c53ce196c";
-  const note = "Testing mongoose update";
+router.post("api/article/note/:id", function (req, res) {
+  const id = req.params.id;
+  const note = req.body.note;
+  // const id = "5b2d5ae1eb433f0c53ce196c";
+  // const note = "Testing mongoose update";
   const newNote = {
     id: id,
     note: note
@@ -59,6 +61,6 @@ router.delete("/api/article/:id", function (req, res) {
     res.render("saved", { data });
   })
 
-// })
+})
 
 module.exports = router;

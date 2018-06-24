@@ -12,7 +12,7 @@
     </li>
   </ul>
 </div>
-<button class="saved-articles">Saved Articles</button>
+{{!-- <button class="saved-articles">Saved Articles</button> --}}
 <div class="jumbotron">
   <h1 class="display-4">NEWS SCRAPER</h1>
   <p class="lead">Scrape the latest tech news on the New York Times</p>
@@ -24,10 +24,7 @@
 
 <div class="container-articles">
   {{#each data}}
-
-
   <form class="create-form">
-
     <div class="form-group">
 
       <a href={{articleLink}} data-head={{id}}>{{headline}}</a>

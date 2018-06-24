@@ -2,20 +2,13 @@
 $(document).ready(function() {
   document.getElementById("scrape").addEventListener("click", function(){
 
-    // alert("clicked");
-    $.AJAX({
-      type: "GET",
-      URL: "/scrape"
+    $.get("/scrape", function(data){
+      console.log(data)
+      if(data){
+        $("body").html(data);
+      }
     })
 
-    // $.GET("/scrape", function(){
-    //   alert("articles scraped")
-    // })
-  //   function() {
-  //     console.log("Articles sraped");
-  //     alert("New Articles added");
-  //   }
-  // );
 });
   // $("#scrape").on("onclick", function(event){
   //   alert("clicked");
@@ -29,9 +22,9 @@ $(document).ready(function() {
     // console.log(heading);
     var newArticle = {
       headline: $("a",this).text().trim(),
-      imgLink: $("img").attr('src'),
+      imgLink: $("img",this).attr('src'),
       sum: $("p",this).text().trim(),
-      articleLink : $("a").attr('href')
+      articleLink : $("a",this).attr('href')
     }
     
     console.log(newArticle);
@@ -47,7 +40,7 @@ $(document).ready(function() {
     );
   });
 
-  $(".saved-articles").on("onlclick", function(event) {
+  $(".saved-articles").on("onclick", function(event) {
 
     $.GET("/api/article/saved",
       function() {
